@@ -1,0 +1,1 @@
+- [EasyDrop scope](easydrop-scope.md) — QR-only peer-to-peer file transfers; do not add nearby-device discovery.

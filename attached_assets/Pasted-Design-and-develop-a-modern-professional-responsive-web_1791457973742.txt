@@ -1,0 +1,769 @@
+Design and develop a modern, professional, responsive web application called **EasyDrop** — a fast and simple QR-based file-sharing platform.
+
+### Product Concept
+
+EasyDrop allows one device to send files to another device without searching for nearby devices.
+
+The sender creates a temporary transfer session and generates a QR code. The receiver scans the QR code, opens the secure transfer session, and receives the selected files. After the transfer is completed, the receiver can download the files.
+
+### Core Experience
+
+**Scan → Connect → Select → Send → Download**
+
+Do NOT include:
+
+* Nearby device discovery
+* Nearby device lists
+* Bluetooth device scanning
+* Device radar
+* Manual device searching
+
+The QR code is the primary connection and pairing mechanism.
+
+---
+
+## Main Workflow
+
+```text
+HOME
+ ↓
+CREATE TRANSFER
+ ↓
+GENERATE QR CODE
+ ↓
+RECEIVER SCANS QR
+ ↓
+TRANSFER SESSION CONNECTED
+ ↓
+SENDER SELECTS FILES
+ ↓
+FILE PREVIEW
+ ↓
+SEND FILES
+ ↓
+TRANSFER PROGRESS
+ ↓
+TRANSFER COMPLETE
+ ↓
+RECEIVER DOWNLOADS FILES
+ ↓
+SESSION ENDED SECURELY
+```
+
+---
+
+# 1. Home Page
+
+Create a clean SaaS-style landing page.
+
+### Navbar
+
+**EasyDrop**
+
+* Home
+* How It Works
+* Features
+* Security
+* Create Transfer
+
+Primary button:
+
+**Create Transfer**
+
+### Hero
+
+Headline:
+
+**Scan. Send. Download.**
+
+Subheading:
+
+**Share files instantly between devices using a simple QR code. No nearby-device searching. No complicated setup.**
+
+Buttons:
+
+**Create Transfer**
+
+**How It Works**
+
+Add a subtle visual showing:
+
+**Phone → QR Code → Laptop**
+
+### Trust Indicators
+
+* ⚡ Fast Transfers
+* 🔒 Secure Sessions
+* 📱 Works Across Devices
+* 🚫 No App Required
+
+---
+
+# 2. How It Works
+
+Create three simple steps.
+
+### Step 1 — Create
+
+**Create a Transfer**
+
+Choose the files you want to send and create a temporary sharing session.
+
+### Step 2 — Scan
+
+**Scan the QR Code**
+
+Open EasyDrop on the receiving device and scan the QR code.
+
+### Step 3 — Download
+
+**Send & Download**
+
+Transfer the files and download them securely on the receiving device.
+
+Use simple animated icons and subtle transitions.
+
+---
+
+# 3. Create Transfer Page
+
+Heading:
+
+**Create a New Transfer**
+
+Supporting text:
+
+**Choose the files you want to share. A temporary QR session will be created for you.**
+
+Display:
+
+**Step 1 of 3**
+
+`01 Create → 02 Connect → 03 Transfer`
+
+### File Upload Area
+
+Large drag-and-drop area:
+
+**Drop your files here**
+
+or
+
+**Browse Files**
+
+Supporting text:
+
+**You can select multiple files**
+
+Allow:
+
+* Images
+* Videos
+* PDFs
+* Documents
+* ZIP files
+* Other common file types
+
+After selecting files, display file cards containing:
+
+* File icon/thumbnail
+* File name
+* File type
+* File size
+* Remove button
+
+Example:
+
+```text
+📄 project.pdf
+PDF • 4.8 MB                         ×
+
+🖼 photo.jpg
+JPG • 2.4 MB                         ×
+
+🎥 video.mp4
+MP4 • 18.2 MB                        ×
+```
+
+Button:
+
+**Continue**
+
+---
+
+# 4. QR Code Connection Page
+
+After the sender clicks Continue, generate a temporary QR code.
+
+Heading:
+
+**Scan to Connect**
+
+Supporting text:
+
+**Scan this QR code from the receiving device to join this transfer.**
+
+Place a large, high-quality QR code in the center.
+
+Below it show:
+
+**Session ID**
+
+`ED-82A91`
+
+**Expires in**
+
+`04:52`
+
+Status:
+
+**Waiting for receiver to scan...**
+
+Add a subtle animated scanning indicator.
+
+Buttons:
+
+**Cancel Transfer**
+
+**Refresh QR**
+
+The QR session must be temporary and unique.
+
+---
+
+# 5. Receiver Scan Page
+
+When the receiver scans the QR code, automatically open the EasyDrop transfer page.
+
+Show:
+
+### Incoming Transfer
+
+**Someone wants to send files to this device.**
+
+Display:
+
+* Number of files
+* Total size
+* File types
+
+Example:
+
+```text
+3 Files
+25.4 MB
+
+📷 photo.jpg
+📄 project.pdf
+🎥 presentation.mp4
+```
+
+Button:
+
+**Accept Transfer**
+
+Secondary option:
+
+**Decline**
+
+Do not automatically download files without the receiver's confirmation.
+
+---
+
+# 6. Connected State
+
+After the receiver accepts:
+
+Show:
+
+**Connected Successfully ✓**
+
+Supporting text:
+
+**The devices are securely connected and ready for transfer.**
+
+Display:
+
+**Sender → Receiver**
+
+Status:
+
+🟢 Connected
+
+Then automatically move to the transfer stage.
+
+---
+
+# 7. File Preview
+
+Before sending, show a professional confirmation screen.
+
+Heading:
+
+**Ready to Send**
+
+Show:
+
+**Files**
+
+```text
+photo.jpg          2.4 MB
+project.pdf        4.8 MB
+video.mp4          18.2 MB
+```
+
+Show:
+
+**Total Size: 25.4 MB**
+
+Buttons:
+
+**Change Files**
+
+**Send Files**
+
+This prevents accidental transfers.
+
+---
+
+# 8. Transfer Progress
+
+Heading:
+
+**Sending Files**
+
+Show a large circular or horizontal progress indicator.
+
+Example:
+
+**67%**
+
+```text
+██████████████░░░░░░
+```
+
+Display:
+
+**18.3 MB / 25.4 MB**
+
+Current file:
+
+**Sending video.mp4...**
+
+File status:
+
+```text
+✓ photo.jpg
+✓ project.pdf
+◌ video.mp4
+```
+
+Show transfer speed:
+
+**8.4 MB/s**
+
+Show estimated time:
+
+**About 2 seconds remaining**
+
+Button:
+
+**Cancel Transfer**
+
+Use smooth progress animation.
+
+---
+
+# 9. Professional Transfer Completion
+
+When the transfer reaches 100%, create a polished success animation.
+
+Do NOT use excessive emojis or childish effects.
+
+Animation sequence:
+
+1. Progress reaches 100%.
+2. Circular checkmark draws smoothly.
+3. Small elegant particles/sparkles appear around the checkmark.
+4. Success card fades in.
+5. Transfer summary appears.
+
+Heading:
+
+**Transfer Complete**
+
+Supporting text:
+
+**Everything was delivered successfully.**
+
+Summary card:
+
+```text
+Recipient
+Connected Device
+
+Files Shared
+3 files
+
+Total Size
+25.4 MB
+
+Status
+Successfully Delivered ✓
+
+Session
+Ended Securely
+```
+
+Primary button:
+
+**Start New Transfer**
+
+Secondary button:
+
+**Return Home**
+
+Keep the success animation around 1–2 seconds.
+
+---
+
+# 10. Receiver Download Page
+
+After transfer completion, the receiver sees:
+
+### Files Ready
+
+**Your files have been received successfully.**
+
+Display file cards:
+
+```text
+🖼 photo.jpg
+2.4 MB
+[Download]
+
+📄 project.pdf
+4.8 MB
+[Download]
+
+🎥 video.mp4
+18.2 MB
+[Download]
+```
+
+Primary button:
+
+**Download All**
+
+Secondary:
+
+**Download Individually**
+
+Show:
+
+**Transfer completed successfully ✓**
+
+---
+
+# 11. Session Expiration
+
+Every transfer should use a temporary session.
+
+Display:
+
+**Session expires in 04:52**
+
+If the session expires:
+
+### Session Expired
+
+**This EasyDrop transfer session is no longer available.**
+
+Buttons:
+
+**Create New Transfer**
+
+**Return Home**
+
+---
+
+# 12. Security UX
+
+Make security visible but simple.
+
+Show:
+
+🔒 **Secure Temporary Session**
+
+Use:
+
+* Unique transfer session ID
+* Temporary QR code
+* Session expiration
+* Receiver confirmation
+* Encrypted communication
+* No permanent public file links
+* Automatic session termination after transfer
+
+Do not make exaggerated security claims.
+
+---
+
+# 13. Visual Design
+
+Use a premium modern SaaS interface.
+
+### Colors
+
+Primary:
+
+* Deep navy / charcoal
+* Indigo / electric blue
+
+Success:
+
+* Green
+
+Background:
+
+* White
+* Very light gray
+
+Use gradients sparingly.
+
+### Typography
+
+Use:
+
+**Inter**
+
+Typography should be clean and highly readable.
+
+### Components
+
+Use:
+
+* Rounded cards
+* Soft borders
+* Subtle shadows
+* Clean spacing
+* Modern icons
+* Large clear buttons
+* Minimal interface
+* Professional empty states
+* Responsive layouts
+
+Avoid:
+
+* Excessive gradients
+* Excessive glassmorphism
+* Huge text
+* Too many colors
+* Clutter
+* Excessive animations
+* Childish emoji animations
+
+---
+
+# 14. Animation System
+
+Use professional micro-interactions.
+
+### Buttons
+
+* Smooth hover
+* Slight scale
+* Soft highlight
+
+### File Upload
+
+* Drag-over highlight
+* Smooth file-card appearance
+
+### QR Page
+
+* QR fade/scale entrance
+* Subtle scanning-line animation
+
+### Connection
+
+* Smooth connection indicator
+* Checkmark animation
+
+### Transfer
+
+* Smooth progress animation
+* Subtle data-flow particles
+
+### Completion
+
+* Checkmark drawing animation
+* Small particle burst
+* Success card fade-in
+
+Respect:
+
+`prefers-reduced-motion`
+
+for accessibility.
+
+---
+
+# 15. Responsive Design
+
+The website must work perfectly on:
+
+* Mobile phones
+* Tablets
+* Laptops
+* Desktop monitors
+
+Mobile should be the highest priority because the receiver will commonly scan the QR code using a phone.
+
+Make the QR code large enough to scan comfortably.
+
+---
+
+# 16. Technologies
+
+### Frontend
+
+* HTML5
+* CSS3
+* JavaScript ES6+
+* Tailwind CSS
+* Lucide Icons
+* Inter Font
+
+### QR Code
+
+For QR generation:
+
+**QRCode.js**
+
+For QR scanning:
+
+**html5-qrcode**
+
+### Real-Time Communication
+
+Use:
+
+**WebSocket / Socket.IO**
+
+for session creation, connection status, and transfer signaling.
+
+### File Transfer
+
+Use:
+
+**WebRTC**
+
+for peer-to-peer file transfer where appropriate.
+
+### Backend
+
+Use:
+
+**Node.js + Express.js**
+
+for:
+
+* Temporary session creation
+* Session IDs
+* QR pairing
+* Signaling
+* Connection management
+* Session expiration
+
+Do not store transferred files permanently unless explicitly required.
+
+---
+
+# 17. Connection Status
+
+Use a clear status system throughout the application:
+
+```text
+Creating Session
+      ↓
+Waiting for Scan
+      ↓
+Connecting
+      ↓
+Connected
+      ↓
+Preparing Files
+      ↓
+Sending
+      ↓
+Completed
+      ↓
+Session Ended
+```
+
+Make the current state visually obvious.
+
+---
+
+# 18. Error States
+
+Design professional error screens for:
+
+### QR Scan Failed
+
+**Couldn't read the QR code**
+
+Try again.
+
+### Session Expired
+
+**This transfer session has expired.**
+
+Create a new transfer.
+
+### Connection Lost
+
+**Connection interrupted**
+
+The devices were disconnected.
+
+Button:
+
+**Reconnect**
+
+### Transfer Failed
+
+**Something went wrong while transferring the files.**
+
+Buttons:
+
+**Retry Transfer**
+
+**Cancel**
+
+---
+
+# 19. Final Product Identity
+
+Product name:
+
+**EasyDrop**
+
+Tagline:
+
+**Scan. Send. Download.**
+
+Core promise:
+
+**Simple QR-based file sharing between devices.**
+
+The overall experience should feel like a real production-ready SaaS product rather than a basic student project.
+
+The interface should communicate:
+
+**Fast + Simple + Secure + Professional**
+
+Most importantly, the user should understand the entire product within a few seconds:
+
+**Create QR → Scan → Send → Download**

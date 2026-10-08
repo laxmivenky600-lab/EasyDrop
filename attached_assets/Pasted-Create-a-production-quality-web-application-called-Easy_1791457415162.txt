@@ -1,0 +1,722 @@
+Create a production-quality web application called **EasyDrop** — a smart nearby-device information-sharing platform.
+
+The application should feel like a **real modern SaaS/startup product**, not a basic college project.
+
+### 1. CORE CONCEPT
+
+EasyDrop allows a user to:
+
+**Create a session → Discover nearby devices → Select a device → Confirm connection → Generate QR → Scan QR → Connect → Select information → Preview → Share → Track transfer → Complete → Securely end session**
+
+The main goal is to make sharing information between nearby devices **fast, simple, secure and intuitive**.
+
+---
+
+# 2. BRAND
+
+### Product
+
+**EasyDrop**
+
+### Tagline
+
+**Connect • Select • Share**
+
+### Hero headline
+
+**Find a device. Scan once. Share instantly.**
+
+### Supporting text
+
+**Discover nearby devices, choose who you want to connect with, and securely share information through a temporary QR session.**
+
+---
+
+# 3. TECHNOLOGIES
+
+Build the frontend using:
+
+### Frontend
+
+* **HTML5** — page structure
+* **CSS3** — styling, responsive design and animations
+* **JavaScript (ES6+)** — application logic and interactions
+* **Tailwind CSS** — modern responsive UI styling
+* **Lucide Icons** — clean interface icons
+* **Google Fonts / Inter** — typography
+
+### QR functionality
+
+Use a JavaScript QR library such as:
+
+* **QRCode.js** for QR generation
+* **html5-qrcode** or another suitable browser QR solution for scanning
+
+### Real-time communication / future backend
+
+For the actual sharing system, design the architecture so it can later support:
+
+* **WebRTC** — peer-to-peer device communication
+* **WebSocket / Socket.IO** — real-time connection and session status
+* **Node.js + Express.js** — backend API
+* **MongoDB / Firebase** — temporary session information if required
+
+### Important browser limitation
+
+Do not falsely claim that a normal website can automatically discover every nearby phone or laptop.
+
+For the frontend prototype, create a **realistic simulated nearby-device discovery experience**.
+
+For the production version, structure the application so WebRTC, WebSocket, local-network discovery, QR-based session pairing and supported browser APIs can be integrated later.
+
+---
+
+# 4. VISUAL DESIGN
+
+Use a:
+
+**Premium + Minimal + Modern SaaS + Technology**
+
+visual style.
+
+### Colors
+
+* White / very light background
+* Dark navy/charcoal text
+* Indigo/electric blue primary accent
+* Green only for successful states
+* Neutral gray for secondary information
+
+### UI
+
+* Rounded cards
+* Soft borders
+* Subtle shadows
+* Clean spacing
+* Large readable typography
+* Consistent icon system
+* Smooth transitions
+* Minimal gradients
+
+Avoid:
+
+* Excessive gradients
+* Excessive glassmorphism
+* Too many colors
+* Huge emojis
+* Excessive animations
+* Cluttered dashboards
+
+---
+
+# 5. HOME PAGE
+
+Navigation:
+
+**EasyDrop Logo**
+
+Home
+How It Works
+Features
+Security
+**Create Session**
+
+Hero:
+
+### Find a device. Scan once. Share instantly.
+
+Supporting text:
+
+Discover nearby devices, choose who you want to connect with, and securely share information through a temporary QR session.
+
+Buttons:
+
+**Create Session**
+
+**How It Works**
+
+Trust indicators:
+
+⚡ Fast Connection
+🔒 Private Session
+📱 No App Required
+
+Add subtle page-load animations.
+
+---
+
+# 6. CREATE SESSION
+
+When the user clicks **Create Session**, smoothly transition into the sharing workflow.
+
+At the top show:
+
+**01 Nearby → 02 Connect → 03 Share → 04 Complete**
+
+Heading:
+
+### Find a nearby device
+
+Supporting text:
+
+**Make sure the other device has EasyDrop open and is ready to connect.**
+
+---
+
+# 7. NEARBY DEVICE DISCOVERY
+
+Display realistic device cards:
+
+### Example
+
+**Venkatesh's Phone**
+Android • Nearby
+🟢 Strong connection
+
+**Lakshmi's Laptop**
+Windows • Nearby
+🟢 Good connection
+
+**Android Device**
+Android • Nearby
+🟢 Available
+
+Do not show:
+
+* Phone numbers
+* Email addresses
+* Exact location
+* Other unnecessary private information
+
+### Effects
+
+When searching:
+
+**Searching for nearby devices...**
+
+Use:
+
+* Subtle animated scanning indicator
+* Device cards fade/slide into view
+* Connection indicators gently pulse
+
+If no devices are found:
+
+### No nearby devices found
+
+Make sure the other device has EasyDrop open and is ready to connect.
+
+Buttons:
+
+**Scan Again**
+
+**Use QR Instead**
+
+---
+
+# 8. SELECT DEVICE
+
+When the user clicks a device:
+
+Highlight the selected device.
+
+Show:
+
+### Device Selected ✓
+
+**Venkatesh's Phone**
+
+Android • Nearby • Strong connection
+
+Button:
+
+**Continue →**
+
+Effect:
+
+* Card smoothly scales/highlights
+* Checkmark appears
+* Other devices become visually secondary
+
+---
+
+# 9. CONNECTION CONFIRMATION
+
+Before creating the QR code, show an additional security confirmation.
+
+### Connect to Venkatesh's Phone?
+
+Android • Nearby • Strong connection
+
+Buttons:
+
+**Cancel**
+
+**Continue**
+
+This prevents accidental connections.
+
+---
+
+# 10. QR CONNECTION
+
+Show:
+
+### Scan to Connect
+
+**Ask the selected device to scan this QR code.**
+
+Display:
+
+* Large QR code
+* Session ID
+* Countdown timer
+* Connection status
+
+Example:
+
+**Session ID: ED-82A91**
+
+**Expires in 04:52**
+
+Status:
+
+**Waiting for scan...**
+
+Buttons:
+
+**Cancel Session**
+
+### QR effects
+
+* QR smoothly appears
+* Subtle scanning line
+* Connection status animation
+* Countdown updates smoothly
+
+---
+
+# 11. DEVICE CONNECTED
+
+After scanning:
+
+### ✓ Device Connected
+
+**Venkatesh's Phone is ready.**
+
+Show:
+
+🟢 Connected
+
+Use a subtle:
+
+* Checkmark animation
+* Connection ripple
+* Short transition to next step
+
+---
+
+# 12. INFORMATION SELECTION
+
+Heading:
+
+### What do you want to share?
+
+Selectable information cards:
+
+📍 **Location**
+🔗 **Link**
+📝 **Text**
+📅 **Event**
+📁 **Resources**
+🚨 **Emergency**
+👤 **Contact**
+
+Allow multiple selections.
+
+Each card should:
+
+* Highlight when selected
+* Show checkmark
+* Have smooth hover/tap animation
+
+Button:
+
+**Continue →**
+
+---
+
+# 13. PREVIEW & CONFIRM
+
+This is an important new step.
+
+Before sending anything, show:
+
+### Ready to Share
+
+**Recipient**
+
+Venkatesh's Phone
+
+**Selected Information**
+
+✓ Location
+✓ Website Link
+✓ Text
+
+Show exactly what will be shared.
+
+Buttons:
+
+**Change Selection**
+
+**Share Now →**
+
+This gives the user a final opportunity to verify the information.
+
+---
+
+# 14. TRANSFER SCREEN
+
+After clicking Share Now:
+
+### Sharing your information
+
+**Connected to Venkatesh's Phone**
+
+Show animated progress:
+
+**80%**
+
+████████░░
+
+Display individual items:
+
+✓ Location — Sent
+✓ Website Link — Sent
+◌ Text — Sending...
+
+Add subtle data-flow particles moving from sender → receiver.
+
+Also show:
+
+**Cancel Transfer**
+
+The user must be able to stop an active transfer.
+
+---
+
+# 15. TRANSFER COMPLETE — IMPORTANT REQUEST
+
+When the transfer reaches 100%:
+
+Do NOT create a childish giant emoji explosion.
+
+Instead create a **professional success celebration**.
+
+Sequence:
+
+### Step 1
+
+Progress reaches **100%**
+
+### Step 2
+
+Progress bar completes.
+
+### Step 3
+
+A circular success icon appears.
+
+### Step 4
+
+The checkmark draws itself smoothly.
+
+### Step 5
+
+A small elegant particle/sparkle burst appears around the checkmark.
+
+Use subtle particles inspired by:
+
+✨ 🎉 🎊
+
+but keep them **small and professional**.
+
+### Step 6
+
+Success content fades upward.
+
+Show:
+
+# Transfer Complete
+
+**Everything was delivered successfully.**
+
+---
+
+# 16. TRANSFER SUMMARY
+
+Show a clean summary card:
+
+**Recipient**
+
+Venkatesh's Phone
+
+**Items Shared**
+
+3 items
+
+**Transfer Status**
+
+✓ Successfully delivered
+
+**Session**
+
+🔒 Ended securely
+
+Primary button:
+
+### Start New Transfer
+
+Secondary button:
+
+### Return Home
+
+---
+
+# 17. SESSION TIMER
+
+Every sharing session should have a temporary expiration timer.
+
+Example:
+
+🔒 **Session expires in 04:52**
+
+When the session ends:
+
+### Session Ended Securely
+
+**Your temporary sharing session has been closed.**
+
+This reinforces the privacy concept.
+
+---
+
+# 18. CONNECTION STATUS SYSTEM
+
+Always show the current state clearly:
+
+**Searching**
+
+↓
+
+**Device Selected**
+
+↓
+
+**Connecting**
+
+↓
+
+**Connected ✓**
+
+↓
+
+**Selecting Information**
+
+↓
+
+**Ready to Share**
+
+↓
+
+**Transferring**
+
+↓
+
+**Complete ✓**
+
+The user should never wonder what is happening.
+
+---
+
+# 19. ANIMATION SYSTEM
+
+Animations should have three levels.
+
+### Level 1 — Micro interactions
+
+Used for:
+
+* Buttons
+* Cards
+* Navigation
+* Hover states
+* Checkboxes
+
+Effects:
+
+* Fade
+* Scale
+* Slide
+* Soft highlight
+
+### Level 2 — Process animations
+
+Used for:
+
+* Device discovery
+* QR scanning
+* Connection
+* Transfer progress
+
+Effects:
+
+* Pulse
+* Scanning line
+* Connection ripple
+* Progress animation
+* Data-flow animation
+
+### Level 3 — Success animation
+
+Used only for transfer completion:
+
+**Progress → Checkmark → Subtle particle burst → Success message**
+
+Keep it around **1–2 seconds**.
+
+---
+
+# 20. RESPONSIVE DESIGN
+
+The interface must work on:
+
+* Mobile
+* Tablet
+* Laptop
+* Desktop
+
+### Mobile
+
+* Device cards stack vertically
+* QR code scales properly
+* Buttons remain touch-friendly
+* Progress indicator remains readable
+* No horizontal scrolling
+
+### Desktop
+
+* Centered workflow
+* Spacious layout
+* Device cards can appear in a grid
+* QR and connection information can use a two-column layout where appropriate
+
+---
+
+# 21. ACCESSIBILITY & UX
+
+Use:
+
+* Semantic HTML
+* Keyboard navigation
+* Visible focus states
+* Proper button labels
+* Accessible color contrast
+* Responsive typography
+* `prefers-reduced-motion` support
+
+Never make an important action dependent only on hover.
+
+---
+
+# 22. SECURITY UX
+
+Clearly communicate:
+
+🔒 Temporary session
+🔐 QR-based pairing
+✓ Device confirmation
+🕐 Session expiration
+🛑 Cancel transfer
+✓ Secure session ending
+
+Do not expose unnecessary personal information.
+
+---
+
+# 23. FINAL USER EXPERIENCE
+
+The complete experience should feel like:
+
+**Simple enough for a first-time user**
+
+*
+
+**Professional enough to look like a real startup product**
+
+*
+
+**Interactive enough to impress during a college project/hackathon demonstration.**
+
+Final workflow:
+
+**HOME**
+
+↓
+
+**CREATE SESSION**
+
+↓
+
+**DISCOVER NEARBY DEVICES**
+
+↓
+
+**SELECT DEVICE**
+
+↓
+
+**CONFIRM CONNECTION**
+
+↓
+
+**GENERATE QR**
+
+↓
+
+**SCAN QR**
+
+↓
+
+**DEVICE CONNECTED**
+
+↓
+
+**SELECT INFORMATION**
+
+↓
+
+**PREVIEW & CONFIRM**
+
+↓
+
+**SHARE NOW**
+
+↓
+
+**TRANSFER PROGRESS**
+
+↓
+
+**TRANSFER COMPLETE ✨**
+
+↓
+
+**SESSION ENDED SECURELY**
+
+↓
+
+**START NEW TRANSFER**
+
+Build the interface with clean reusable components and maintain a consistent design system throughout the entire application.

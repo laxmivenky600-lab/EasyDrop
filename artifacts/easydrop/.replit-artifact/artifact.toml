@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "EasyDrop"
+description = "QR-paired peer-to-peer file sharing. Senders create expiring sessions, receivers approve incoming files, and files transfer directly between browsers without being stored on the server."
+version = "1.0.0"
+id = "artifacts/easydrop"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 22063
+
+[services.development]
+run = "pnpm --filter @workspace/easydrop run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/easydrop", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/easydrop/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "22063"
+BASE_PATH = "/"
