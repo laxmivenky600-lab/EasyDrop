@@ -1,0 +1,532 @@
+Update my existing **EasyDrop** website. Do NOT rebuild the project from scratch and do NOT break or remove any existing QR, WebRTC, session, file transfer, receiver approval, or download functionality.
+
+## MAIN CHANGE
+
+I want to redesign the **homepage structure and navigation** to make EasyDrop look like a professional modern SaaS product.
+
+The new top navigation should be:
+
+**EasyDrop Logo | Home | How It Works | Features | Security | Create Transfer**
+
+The **Create Transfer** button should be visually highlighted as the primary CTA.
+
+---
+
+# 1. HOME
+
+Create a clean and professional hero section.
+
+### Heading:
+
+**Scan. Connect. Share.**
+
+### Description:
+
+**Share files instantly between devices using a simple QR code. No account. No cloud storage. No nearby-device searching.**
+
+Add two buttons:
+
+**Create Transfer**
+Primary button that opens the existing transfer/file-selection flow.
+
+**How It Works**
+Scrolls smoothly to the How It Works section.
+
+### Supporting points:
+
+* No account required
+* No cloud storage
+* Direct device-to-device transfer
+* Works across modern browsers
+* No app installation required
+
+Use a professional visual representation of:
+
+**Device A → QR Code → Device B**
+
+Do not use childish graphics or excessive animations.
+
+---
+
+# 2. HOW IT WORKS
+
+Create a dedicated homepage section titled:
+
+### How EasyDrop Works
+
+Subtitle:
+
+**A simple connection. A clear approval. A direct transfer.**
+
+Show the process as 5 clean steps.
+
+### 01 — Create a Transfer
+
+The sender selects the files they want to share.
+
+EasyDrop creates a temporary transfer session with a QR code and Session Code.
+
+### 02 — Scan or Enter Code
+
+The receiver scans the QR code using their phone camera or enters the Session Code manually.
+
+Do NOT show nearby-device discovery.
+
+### 03 — Connect
+
+The two browsers establish a temporary connection.
+
+Show:
+
+**Device Connected ✓**
+
+### 04 — Send or Receive
+
+Both connected devices should have equal permissions.
+
+Users can:
+
+**Send Files**
+
+or
+
+**Receive Files**
+
+Do not permanently classify one device as sender and the other as receiver.
+
+### 05 — Complete
+
+Files are transferred directly between the connected browsers.
+
+The receiver can review and download the received files.
+
+Show:
+
+**Transfer Complete ✓**
+
+Add a subtle professional success animation.
+
+---
+
+# 3. FEATURES
+
+Create a professional Features section.
+
+Heading:
+
+### Everything you need for a simple file handoff.
+
+Create clean feature cards for:
+
+### QR-Based Sharing
+
+Connect devices quickly using a temporary QR code.
+
+### Two-Way Transfer
+
+Both connected devices can send and receive files.
+
+### No Account
+
+Start a transfer without creating an account or signing in.
+
+### No Cloud Storage
+
+File bytes are not permanently uploaded or stored on EasyDrop servers.
+
+### Direct WebRTC Transfer
+
+Use WebRTC DataChannel for direct browser-to-browser file transfer.
+
+### Receiver Approval
+
+The receiver must review and approve an incoming transfer before file bytes are sent.
+
+### Multiple Files
+
+Allow users to select and transfer multiple files.
+
+### Cross-Device
+
+Works between phones, laptops, tablets, and desktop browsers.
+
+### Temporary Sessions
+
+Transfer sessions automatically expire and can also be manually ended.
+
+### No App Required
+
+Everything works through a modern web browser.
+
+Use Lucide-style icons and clean cards.
+
+Do not overcrowd this section.
+
+---
+
+# 4. SECURITY
+
+Create a dedicated Security section.
+
+Heading:
+
+### Your files stay yours.
+
+Subtitle:
+
+**EasyDrop is designed around temporary sessions, receiver consent, and direct browser-to-browser transfer.**
+
+Create security cards:
+
+### Receiver Consent
+
+No file bytes should be transferred until the receiver approves the incoming transfer.
+
+### Direct Transfer
+
+Use WebRTC DataChannel to transfer file bytes directly between browsers whenever the connection allows it.
+
+### Temporary Sessions
+
+QR sessions and session credentials should expire automatically.
+
+### No Permanent File Storage
+
+EasyDrop should not permanently store uploaded files or create permanent public file links.
+
+### Secure Browser Connection
+
+WebRTC provides an encrypted peer connection between browsers.
+
+### Automatic Cleanup
+
+Expired or ended sessions should be removed from the active session system.
+
+Add a small security workflow:
+
+**Select → Review → Approve → Connect → Transfer → Complete**
+
+Do not make unrealistic security claims.
+
+---
+
+# 5. CREATE TRANSFER
+
+Keep the existing Create Transfer functionality.
+
+When the user clicks:
+
+**Create Transfer**
+
+open the existing file-selection/transfer flow.
+
+The existing functionality must continue to support:
+
+* File selection
+* Drag and drop
+* Multiple files
+* File preview
+* File name and size
+* Preview & Confirm
+* Temporary QR generation
+* Session Code
+* Session expiration timer
+* QR scanning
+* Session Code joining
+* Receiver approval
+* WebRTC connection
+* Real transfer progress
+* Transfer speed
+* ETA
+* Cancel transfer
+* Download received files
+* Transfer completion
+* Reuse the same connection for additional transfers
+* End session
+
+DO NOT replace these with fake demo functionality.
+
+---
+
+# 6. NAVIGATION BEHAVIOR
+
+Implement smooth scrolling for:
+
+**Home**
+→ Hero section
+
+**How It Works**
+→ How It Works section
+
+**Features**
+→ Features section
+
+**Security**
+→ Security section
+
+**Create Transfer**
+→ Existing real transfer page/flow
+
+The EasyDrop logo should return to Home.
+
+On mobile:
+
+Use a clean hamburger menu.
+
+The mobile menu should contain:
+
+* Home
+* How It Works
+* Features
+* Security
+* Create Transfer
+
+---
+
+# 7. DESIGN STYLE
+
+Make the entire homepage look like a professional modern SaaS product.
+
+### Visual direction
+
+* Minimal
+* Premium
+* Clean
+* Modern
+* Technology-focused
+* Trustworthy
+* Professional
+
+### Colors
+
+Use:
+
+* White / very light gray background
+* Dark navy or charcoal text
+* Indigo / electric blue as the primary accent
+* Green only for successful states
+* Subtle borders
+* Soft shadows
+
+Avoid excessive gradients.
+
+Avoid excessive glassmorphism.
+
+Avoid huge colorful illustrations.
+
+Avoid childish emoji-based UI.
+
+Avoid excessive animations.
+
+Use subtle hover effects and smooth transitions.
+
+---
+
+# 8. TYPOGRAPHY
+
+Use a clean modern font such as:
+
+**Inter**
+
+Use clear hierarchy:
+
+Large bold hero heading.
+
+Medium section headings.
+
+Readable body text.
+
+Small supporting text.
+
+Maintain good spacing between sections.
+
+---
+
+# 9. HOMEPAGE ORDER
+
+The final homepage must follow exactly this order:
+
+```text
+NAVBAR
+
+        ↓
+
+HOME / HERO
+
+"Scan. Connect. Share."
+
+Create Transfer
+How It Works
+
+        ↓
+
+HOW IT WORKS
+
+01 Create a Transfer
+02 Scan or Enter Code
+03 Connect
+04 Send or Receive
+05 Complete
+
+        ↓
+
+FEATURES
+
+QR Sharing
+Two-Way Transfer
+No Account
+No Cloud Storage
+Direct WebRTC
+Receiver Approval
+Multiple Files
+Cross-Device
+Temporary Sessions
+No App Required
+
+        ↓
+
+SECURITY
+
+Receiver Consent
+Direct Transfer
+Temporary Sessions
+No Permanent Storage
+Secure Browser Connection
+Automatic Cleanup
+
+        ↓
+
+FINAL CTA
+
+"Ready to share?"
+
+Create Transfer
+
+        ↓
+
+FOOTER
+```
+
+---
+
+# 10. FINAL CTA
+
+Before the footer, add a clean final call-to-action.
+
+### Heading:
+
+**Ready to share?**
+
+### Text:
+
+**Create a temporary connection and share files directly between your devices.**
+
+Button:
+
+**Create Transfer**
+
+Secondary text:
+
+**No account. No cloud storage. No app required.**
+
+---
+
+# 11. FOOTER
+
+Create a minimal professional footer.
+
+Show:
+
+**EasyDrop**
+
+**Scan. Connect. Share.**
+
+Links:
+
+* Home
+* How It Works
+* Features
+* Security
+* Create Transfer
+
+Small text:
+
+**Temporary QR access. Direct peer-to-peer file transfer. No saved transfer history.**
+
+---
+
+# 12. IMPORTANT — DO NOT CHANGE CORE FUNCTIONALITY
+
+This is extremely important.
+
+Do NOT remove or break:
+
+* QR generation
+* QR scanning
+* Session Code
+* WebRTC
+* Socket.IO signaling
+* Receiver approval
+* File transfer
+* File download
+* Transfer progress
+* Session expiration
+* Cancel transfer
+* Two-way communication
+
+Do NOT add:
+
+* Nearby-device discovery
+* Bluetooth device radar
+* Permanent accounts
+* Permanent file storage
+* Public file links
+* Fake transfer progress
+* Fake WebRTC
+* Permanent sender/receiver roles
+
+The existing transfer system must remain functional.
+
+Only redesign/restructure the **homepage presentation, navigation, sections, copy, and visual experience** according to the structure above.
+
+---
+
+# 13. RESPONSIVE DESIGN
+
+The website must work properly on:
+
+* Mobile phones
+* Tablets
+* Laptops
+* Desktop screens
+
+The QR code and Create Transfer CTA should remain easy to access on mobile.
+
+Use responsive spacing, typography, cards, and navigation.
+
+---
+
+# 14. ACCESSIBILITY
+
+Use:
+
+* Semantic HTML
+* Proper heading hierarchy
+* Keyboard navigation
+* Visible focus states
+* Accessible buttons
+* Accessible navigation
+* Sufficient color contrast
+* Reduced-motion support
+
+---
+
+# FINAL REQUIREMENT
+
+After making these changes, EasyDrop should feel like a **real production-ready SaaS product**, not a student demo.
+
+The user experience should communicate this simple idea immediately:
+
+**Home → Understand EasyDrop → Learn How It Works → See Features → Understand Security → Create Transfer**
+
+Keep the actual file-sharing functionality unchanged and fully working.
