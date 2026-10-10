@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receive Transfer - EasyDrop</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/transfer.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="/" class="logo" aria-label="EasyDrop home">
+                <img src="/assets/logo.png" alt="EasyDrop" class="logo-img">
+            </a>
+            <nav class="nav-links">
+                <a href="/">Home</a>
+                <a href="/#how-it-works">How It Works</a>
+                <a href="/#features">Features</a>
+                <a href="/#security">Security</a>
+                <span class="nav-divider" aria-hidden="true"></span>
+                <a href="/create-transfer" class="btn-primary-small">Create Transfer</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="transfer-container">
+        <div id="receiver-view" class="view active">
+            <h2>Incoming Transfer</h2>
+            <p id="status-text">Connecting to session...</p>
+            <div id="file-list" class="file-list"></div>
+            
+            <div id="approval-controls" style="display: none;">
+                <button id="accept-btn" class="btn-primary">Accept Transfer</button>
+                <button id="decline-btn" class="btn-secondary">Decline</button>
+            </div>
+
+            <div id="progress-container" style="display: none;">
+                <div class="progress-bar"><div id="progress-fill"></div></div>
+                <p id="progress-text">0%</p>
+            </div>
+            
+            <div id="download-controls" style="display: none;">
+                <button id="download-all-btn" class="btn-primary">Download All as ZIP</button>
+            </div>
+        </div>
+    </main>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="/js/session.js"></script>
+    <script src="/js/transfer.js"></script>
+</body>
+</html>

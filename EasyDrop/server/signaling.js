@@ -1,0 +1,134 @@
+const sessions = require('./sessions');
+const cleanup = require('./cleanup');
+
+function initialize(io) {
+    cleanup.startCleanupTask(io);
+
+    io.on('connection', (socket) => {
+        socket.on('create-session', (data, callback) => {
+            if (!data || !data.files || !Array.isArray(data.files)) {
+                return callback({ error: 'Invalid request' });
+            }
+            if (data.files.length > 100) {
+                return callback({ error: 'Too many files. Limit is 100.' });
+            }
+            for (const f of data.files) {
+                if (typeof f.size !== 'number' || typeof f.name !== 'string') {
+                    return callback({ error: 'Invalid file metadata' });
+                }
+                if (f.size > 50 * 1024 * 1024 * 1024) { // 50 GB limit
+                    return callback({ error: 'File size exceeds 50GB limit' });
+                }
+            }
+
+            const session = sessions.createSession(data.files);
+            callback({
+                sessionId: session.sessionId,
+                senderToken: session.senderToken,
+                receiverToken: session.receiverToken
+            });
+        });
+
+        socket.on('join-session', ({ sessionId, role, token }, callback) => {
+            const session = sessions.getSession(sessionId);
+            if (!session) {
+                return callback({ error: 'Session not found or expired' });
+            }
+
+            if (role === 'sender') {
+                if (session.senderToken !== token) return callback({ error: 'Invalid token' });
+                session.senderSocketId = socket.id;
+            } else if (role === 'receiver') {
+                if (session.receiverToken !== token) return callback({ error: 'Invalid token' });
+                session.receiverSocketId = socket.id;
+            }
+
+            socket.join(sessionId);
+            
+            // Notify other peer if present
+            socket.to(sessionId).emit('peer-joined', { role });
+            
+            callback({
+                success: true,
+                files: session.files,
+                peerPresent: role === 'sender' ? !!session.receiverSocketId : !!session.senderSocketId
+            });
+        });
+
+        function validateSession(sessionId) {
+            const session = sessions.getSession(sessionId);
+            if (!session) return null;
+            if (session.senderSocketId !== socket.id && session.receiverSocketId !== socket.id) return null;
+            return session;
+        }
+
+        // WebRTC Signaling
+        socket.on('offer', ({ sessionId, sdp }) => {
+            const session = validateSession(sessionId);
+            // WebRTC should only proceed if the session was explicitly accepted
+            if (!session || session.state !== 'accepted') return;
+            socket.to(sessionId).emit('offer', { sdp });
+        });
+
+        socket.on('answer', ({ sessionId, sdp }) => {
+            const session = validateSession(sessionId);
+            if (!session || session.state !== 'accepted') return;
+            socket.to(sessionId).emit('answer', { sdp });
+        });
+
+        socket.on('ice-candidate', ({ sessionId, candidate }) => {
+            const session = validateSession(sessionId);
+            if (!session || session.state !== 'accepted') return;
+            socket.to(sessionId).emit('ice-candidate', { candidate });
+        });
+
+        // App Signaling
+        socket.on('accept', ({ sessionId }) => {
+            const session = validateSession(sessionId);
+            // Only receiver can accept
+            if (session && session.receiverSocketId === socket.id && session.state === 'pending') {
+                session.state = 'accepted';
+                socket.to(sessionId).emit('accept');
+            }
+        });
+
+        socket.on('decline', ({ sessionId }) => {
+            const session = validateSession(sessionId);
+            if (session && session.receiverSocketId === socket.id) {
+                socket.to(sessionId).emit('decline');
+                sessions.removeSession(sessionId);
+            }
+        });
+
+        socket.on('cancel', ({ sessionId }) => {
+            const session = validateSession(sessionId);
+            if (session && session.senderSocketId === socket.id) {
+                socket.to(sessionId).emit('cancel');
+                sessions.removeSession(sessionId);
+            }
+        });
+
+        socket.on('complete', ({ sessionId }) => {
+            const session = validateSession(sessionId);
+            if (session) {
+                socket.to(sessionId).emit('complete');
+                sessions.removeSession(sessionId);
+            }
+        });
+
+        socket.on('disconnect', () => {
+            // Find sessions this socket was part of and notify the other party
+            for (const [sessionId, session] of sessions.getAllSessions().entries()) {
+                if (session.senderSocketId === socket.id) {
+                    session.senderSocketId = null;
+                    io.to(sessionId).emit('peer-left', { role: 'sender' });
+                } else if (session.receiverSocketId === socket.id) {
+                    session.receiverSocketId = null;
+                    io.to(sessionId).emit('peer-left', { role: 'receiver' });
+                }
+            }
+        });
+    });
+}
+
+module.exports = { initialize };

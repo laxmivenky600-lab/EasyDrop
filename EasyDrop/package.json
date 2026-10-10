@@ -1,0 +1,15 @@
+{
+  "name": "easydrop",
+  "version": "1.0.0",
+  "description": "EasyDrop file transfer",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "express-rate-limit": "^8.7.1",
+    "helmet": "^8.3.0",
+    "socket.io": "^4.7.5"
+  }
+}

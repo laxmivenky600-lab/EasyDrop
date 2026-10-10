@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Transfer - EasyDrop</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/transfer.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="/" class="logo" aria-label="EasyDrop home">
+                <img src="/assets/logo.png" alt="" class="logo-img">
+                <span class="logo-wordmark">EasyDrop</span>
+            </a>
+            
+            <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false" id="mobile-menu-btn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-menu"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-close" style="display:none;"><path d="M18 6L6 18M6 6l12 12"/></svg>
+            </button>
+
+            <div class="nav-menu-wrapper" id="nav-menu-wrapper">
+                <nav class="nav-links">
+                    <a href="/">Home</a>
+                    <a href="/#how-it-works">How It Works</a>
+                    <a href="/#features">Features</a>
+                    <a href="/#security">Security</a>
+                </nav>
+                <span class="nav-divider" aria-hidden="true"></span>
+                <a href="/create-transfer" class="btn-primary-small">Create Transfer</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="transfer-container">
+        <div id="selection-view" class="view active">
+            <h2>Pick what goes. Nothing else.</h2>
+            <div class="drop-zone" id="drop-zone">
+                <p>Drop files here or click to browse</p>
+                <input type="file" id="file-input" multiple style="display: none;">
+                <button class="btn-secondary" onclick="document.getElementById('file-input').click()">Browse files</button>
+            </div>
+            <div id="file-list" class="file-list"></div>
+            <button id="create-session-btn" class="btn-primary" disabled>Create Transfer</button>
+        </div>
+
+        <div id="qr-view" class="view" style="display: none;">
+            <h2>Scan to Connect</h2>
+            <div id="qr-container"></div>
+            <div id="qr-timer-container" style="display: none; margin-top: 15px; margin-bottom: 25px;">
+                <p style="font-size: 15px; font-weight: 600; color: #6b7280; margin: 0;">QR code expires in <span id="qr-countdown" style="font-variant-numeric: tabular-nums;">05:00</span></p>
+            </div>
+            <p id="status-text">Waiting for receiver...</p>
+            <div id="transfer-controls" style="display: none;">
+                <button id="send-files-btn" class="btn-primary">Send Files</button>
+            </div>
+            <div id="progress-container" style="display: none;">
+                <div class="progress-bar"><div id="progress-fill"></div></div>
+                <p id="progress-text">0%</p>
+            </div>
+            <button id="cancel-btn" class="btn-secondary">Cancel Session</button>
+        </div>
+    </main>
+
+    <footer class="site-footer" role="contentinfo">
+        <div class="footer-inner">
+            <!-- Brand -->
+            <div class="footer-brand">
+                <a href="/" class="footer-logo" aria-label="EasyDrop home">
+                    <img src="/assets/logo.png" alt="" class="footer-logo-img">
+                    <span class="footer-brand-name"><strong>EasyDrop</strong></span>
+                </a>
+                <p class="footer-tagline"><em>Scan. Connect. Share.</em></p>
+                <p class="footer-desc">Share files directly between connected devices using temporary sessions and QR codes.</p>
+            </div>
+
+            <!-- Navigation -->
+            <div class="footer-col">
+                <h3 class="footer-col-title">Navigation</h3>
+                <ul class="footer-col-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/#how-it-works" class="footer-scroll-link" data-section="how-it-works">How It Works</a></li>
+                    <li><a href="/#features" class="footer-scroll-link" data-section="features">Features</a></li>
+                    <li><a href="/#security" class="footer-scroll-link" data-section="security">Security</a></li>
+                    <li><a href="/create-transfer" class="footer-create-link">Create Transfer</a></li>
+                </ul>
+            </div>
+
+        <!-- Features -->
+        <div class="footer-col">
+            <h3 class="footer-col-title">Features</h3>
+            <ul class="footer-col-links plain-text">
+                <li>QR-Based Sharing</li>
+                <li>Two-Way Transfer</li>
+                <li>Direct WebRTC Transfer</li>
+                <li>No Account Required</li>
+            </ul>
+        </div>
+
+        <!-- Security -->
+        <div class="footer-col">
+            <h3 class="footer-col-title">Security &amp; Privacy</h3>
+            <ul class="footer-col-links plain-text">
+                <li>Receiver Approval</li>
+                <li>Temporary Sessions</li>
+                <li>No Permanent File Storage</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Animated Text Effect -->
+    <div class="footer-animated-wrapper" id="footer-anim-wrapper">
+        <svg class="footer-animated-svg" viewBox="0 0 1000 200" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+            <defs>
+                <linearGradient id="footer-glow-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="var(--primary)" stop-opacity="0.85"/>
+                    <stop offset="50%" stop-color="#7a9dff" stop-opacity="1"/>
+                    <stop offset="100%" stop-color="var(--primary)" stop-opacity="0.85"/>
+                </linearGradient>
+                <mask id="footer-text-mask">
+                    <rect width="100%" height="100%" fill="black" />
+                    <circle id="footer-reveal-circle" cx="50%" cy="50%" r="0" fill="white" filter="url(#footer-blur-filter)" />
+                </mask>
+                <filter id="footer-blur-filter">
+                    <feGaussianBlur stdDeviation="30"/>
+                </filter>
+            </defs>
+
+            <!-- Background faint text -->
+            <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" class="svg-bg-text">EasyDrop</text>
+
+            <!-- Masked glowing text -->
+            <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" class="svg-reveal-text" mask="url(#footer-text-mask)" fill="url(#footer-glow-gradient)">EasyDrop</text>
+        </svg>
+    </div>
+
+    <div class="footer-divider" aria-hidden="true"></div>
+
+    <!-- Bottom bar -->
+        <div class="footer-bottom">
+            <span class="footer-copyright">&copy; <span id="footer-year"></span> EasyDrop. All rights reserved.</span>
+        </div>
+    </footer>
+
+    <!-- Include libraries -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="/js/qr.js"></script>
+    <script src="/js/session.js"></script>
+    <script src="/js/transfer.js"></script>
+    <script src="/js/main.js"></script>
+</body>
+</html>
